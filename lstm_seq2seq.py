@@ -52,6 +52,7 @@ http://www.manythings.org/anki/
 from keras.models import Model
 from keras.layers import Input, LSTM, Dense
 import numpy as np
+from keras.utils import plot_model
 
 import tensorflow as tf
 import os
@@ -158,6 +159,7 @@ model.fit([encoder_input_data, decoder_input_data], decoder_target_data,
           validation_split=0.2)
 # Save model
 model.save('s2s.h5')
+plot_model(model, to_file='111.png')
 
 # Next: inference mode (sampling).
 # Here's the drill:
