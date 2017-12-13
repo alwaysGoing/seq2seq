@@ -48,11 +48,19 @@ http://www.manythings.org/anki/
     RNN Encoder-Decoder for Statistical Machine Translation
     https://arxiv.org/abs/1406.1078
 '''
-from __future__ import print_function
 
 from keras.models import Model
 from keras.layers import Input, LSTM, Dense
 import numpy as np
+
+import tensorflow as tf
+import os
+from keras.backend.tensorflow_backend import set_session
+
+os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+config = tf.ConfigProto()
+# config.gpu_options.per_process_gpu_memory_fraction = 0.5
+set_session(tf.Session(config=config))
 
 batch_size = 64  # Batch size for training.
 epochs = 100  # Number of epochs to train for.
